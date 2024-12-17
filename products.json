@@ -1,0 +1,25 @@
+[
+    {
+      "id": "prod-1",
+      "title": "Ahri - Spirit Blossom",
+      "description": "Skin temática de Spirit Blossom para Ahri",
+      "code": "SKIN-AHRI-SPB",
+      "price": 1350,
+      "status": true,
+      "stock": 50,
+      "category": "skin",
+      "thumbnails": ["https://example.com/ahri-spirit-blossom.jpg"]
+    },
+    {
+      "id": "prod-2",
+      "title": "Zed - Proyecto",
+      "description": "Skin temática Proyecto para Zed",
+      "code": "SKIN-ZED-PROJECT",
+      "price": 1820,
+      "status": true,
+      "stock": 30,
+      "category": "skin",
+      "thumbnails": ["https://example.com/zed-project.jpg"]
+    }
+  ]
+  
