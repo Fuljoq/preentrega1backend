@@ -8,7 +8,7 @@
       "status": true,
       "stock": 50,
       "category": "skin",
-      "thumbnails": ["https://example.com/ahri-spirit-blossom.jpg"]
+      "thumbnails": ["https://lol-skin.weblog.vc/img/wallpaper/tiles/Ahri_27.webp?1736549890"]
     },
     {
       "id": "prod-2",
@@ -19,7 +19,7 @@
       "status": true,
       "stock": 30,
       "category": "skin",
-      "thumbnails": ["https://example.com/zed-project.jpg"]
+      "thumbnails": ["https://lol-skin.weblog.vc/img/wallpaper/tiles/Zed_3.webp?1736549890"]
     }
   ]
   
