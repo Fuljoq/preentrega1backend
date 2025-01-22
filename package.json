@@ -9,7 +9,12 @@
     "build": "echo 'Build script not defined yet'",
     "test": "echo 'Test script not defined yet'"
   },
-  "keywords": ["backend", "express", "handlebars", "socket.io"],
+  "keywords": [
+    "backend",
+    "express",
+    "handlebars",
+    "socket.io"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
