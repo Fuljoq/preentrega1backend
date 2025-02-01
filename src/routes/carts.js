@@ -27,43 +27,45 @@ async function getProducts() {
   }
 }
 
-router.get('/:cartId', async (req, res) => {
-  const { cartId } = req.params;
-  const carts = await getCarts();
-  const cart = carts.find(c => c.id === cartId);
+module.exports = (io) => {
+  router.get('/:cartId', async (req, res) => {
+    const { cartId } = req.params;
+    const carts = await getCarts();
+    const cart = carts.find(c => c.id === cartId);
 
-  if (!cart) {
-    return res.status(404).json({ error: 'Carrito no encontrado' });
-  }
+    if (!cart) {
+      return res.status(404).json({ error: 'Carrito no encontrado' });
+    }
 
-  res.json(cart.products);
-});
+    res.render('cart', { cart });
+  });
 
-router.post('/:cartId/product/:productId', async (req, res) => {
-  const { cartId, productId } = req.params;
-  const carts = await getCarts();
-  const products = await getProducts();
+  router.post('/:cartId/product/:productId', async (req, res) => {
+    const { cartId, productId } = req.params;
+    const carts = await getCarts();
+    const products = await getProducts();
 
-  let cart = carts.find(c => c.id === cartId);
-  if (!cart) {
-    cart = { id: cartId, products: [] };
-    carts.push(cart);
-  }
+    let cart = carts.find(c => c.id === cartId);
+    if (!cart) {
+      cart = { id: cartId, products: [] };
+      carts.push(cart);
+    }
 
-  const product = products.find(p => p.id === productId);
-  if (!product) {
-    return res.status(404).json({ error: 'Producto no encontrado' });
-  }
+    const product = products.find(p => p.id === productId);
+    if (!product) {
+      return res.status(404).json({ error: 'Producto no encontrado' });
+    }
 
-  const productInCart = cart.products.find(p => p.id === productId);
-  if (productInCart) {
-    productInCart.quantity++;
-  } else {
-    cart.products.push({ id: productId, quantity: 1 });
-  }
+    const productInCart = cart.products.find(p => p.id === productId);
+    if (productInCart) {
+      productInCart.quantity++;
+    } else {
+      cart.products.push({ id: productId, quantity: 1 });
+    }
 
-  await saveCarts(carts);
-  res.status(201).json(cart);
-});
+    await saveCarts(carts);
+    res.status(201).json(cart);
+  });
 
-module.exports = router;
+  return router;
+};

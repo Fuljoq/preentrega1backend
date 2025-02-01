@@ -23,6 +23,16 @@ module.exports = (io) => {
     res.render('products', { products });
   });
 
+  router.get('/:id', async (req, res) => {
+    const { id } = req.params;
+    const products = await getProducts();
+    const product = products.find(p => p.id === id);
+    if (!product) {
+      return res.status(404).send('Producto no encontrado');
+    }
+    res.render('product-details', { product });
+  });
+
   router.post('/', async (req, res) => {
     const { title, description, code, price, stock, category, thumbnails } = req.body;
 
