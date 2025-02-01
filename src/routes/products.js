@@ -20,7 +20,7 @@ async function saveProducts(products) {
 module.exports = (io) => {
   router.get('/', async (req, res) => {
     const products = await getProducts();
-    res.json(products);
+    res.render('products', { products });
   });
 
   router.post('/', async (req, res) => {
@@ -68,4 +68,3 @@ module.exports = (io) => {
 
   return router;
 };
-
